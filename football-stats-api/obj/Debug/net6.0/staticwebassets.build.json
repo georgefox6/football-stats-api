@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "bLJGzJ2flyDsrPOWatVmBdXFEbZx/WBeIHTXGb22TKw=",
+  "Source": "football-stats-api",
+  "BasePath": "_content/football-stats-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
