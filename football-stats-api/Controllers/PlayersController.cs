@@ -16,6 +16,7 @@ namespace football_stats_api
             _context = context;
         }
 
+        // Get all players
         // GET: api/Players
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Player>>> GetPlayer()
@@ -23,8 +24,9 @@ namespace football_stats_api
             return await _context.Player.ToListAsync();
         }
 
+        // Get player by id
         // GET: api/Players/5
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
             var player = await _context.Player.FindAsync(id);
@@ -36,6 +38,37 @@ namespace football_stats_api
 
             return player;
         }
+
+        // Get player by name
+        //Get: api/Players/name/Bruno%20Fernandes
+        [HttpGet("name/{playerName}")]
+        public async Task<ActionResult<Player>> GetPlayerByName(string playerName)
+        {
+            var player = await _context.Player.FirstOrDefaultAsync(pl => pl.playerName == playerName);
+
+            if (player == null)
+            {
+                return NotFound();
+            }
+
+            return player;
+        }
+
+        // Get player by team
+        //Get: api/Players/team/Manchester%20United
+        [HttpGet("team/{playerTeam}")]
+        public async Task<ActionResult<IEnumerable<Player>>> GetPlayerByTeam(string playerTeam)
+        {
+            var player = await _context.Player.Where(pl => pl.playerTeam == playerTeam).ToListAsync();
+
+            if (player == null)
+            {
+                return NotFound();
+            }
+
+            return player;
+        }
+
 
         // PUT: api/Players/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
