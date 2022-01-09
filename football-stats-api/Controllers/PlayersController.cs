@@ -9,9 +9,9 @@ namespace football_stats_api
     [ApiController]
     public class PlayersController : ControllerBase
     {
-        private readonly football_stats_apiContext _context;
+        private readonly FootballStatsDBContext _context;
 
-        public PlayersController(football_stats_apiContext context)
+        public PlayersController(FootballStatsDBContext context)
         {
             _context = context;
         }
