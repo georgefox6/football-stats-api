@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Georg\\Documents\\CSharp\\football-stats-api\\football-stats-api\\football-stats-api.csproj": {}
+    "C:\\Users\\Georg\\Documents\\Csharp\\football-stats-api\\football-stats-api\\football-stats-api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Georg\\Documents\\CSharp\\football-stats-api\\football-stats-api\\football-stats-api.csproj": {
+    "C:\\Users\\Georg\\Documents\\Csharp\\football-stats-api\\football-stats-api\\football-stats-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Georg\\Documents\\CSharp\\football-stats-api\\football-stats-api\\football-stats-api.csproj",
+        "projectUniqueName": "C:\\Users\\Georg\\Documents\\Csharp\\football-stats-api\\football-stats-api\\football-stats-api.csproj",
         "projectName": "football-stats-api",
-        "projectPath": "C:\\Users\\Georg\\Documents\\CSharp\\football-stats-api\\football-stats-api\\football-stats-api.csproj",
+        "projectPath": "C:\\Users\\Georg\\Documents\\Csharp\\football-stats-api\\football-stats-api\\football-stats-api.csproj",
         "packagesPath": "C:\\Users\\Georg\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Georg\\Documents\\CSharp\\football-stats-api\\football-stats-api\\obj\\",
+        "outputPath": "C:\\Users\\Georg\\Documents\\Csharp\\football-stats-api\\football-stats-api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Georg\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,23 +40,23 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[3.1.10, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.1, )"
             },
-            "Swashbuckle.AspNetCore": {
+            "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.2.21505.57\\RuntimeIdentifierGraph.json"
         }
       }
     }
