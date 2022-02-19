@@ -12,6 +12,7 @@ namespace football_stats_api.Models
         public string? playerPosition { get; set; }
         public string? playerAge { get; set; }
         public string? playerTeam { get; set; }
+        public string? imageUrl { get; set; }
 
         //Playing time
         public int? matchesPlayed { get; set; }
