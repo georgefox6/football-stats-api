@@ -6,34 +6,31 @@ namespace football_stats_api.Models
     public class PlayerDefendingPercentile
     {
         public int Id { get; set; }
-        public int? PlayerId { get; set; }
 
-        public int? GoalsPercentile { get; set; }
-        public int? ExpectedGoalsPercentile { get; set; }
-        public int? ShotsPercentile { get; set; }
-        public int? ShotsOnTargetPercentile { get; set; }
-        public int? PenaltyGoalsPercentile { get; set; }
-        public int? FreeKickShotsPercentile { get; set; }
+        public int PlayerId { get; set; }
 
-        public int? GoalsPer90Percentile { get; set; }
-        public int? ExpectedGoalsPer90Percentile { get; set; }
-        public int? ShotsPer90Percentile { get; set; }
-        public int? ShotsOnTargetPer90Percentile { get; set; }
-        public int? PenaltyGoalsPer90Percentile { get; set; }
-        public int? FreeKickShotsPer90Percentile { get; set; }
+        public int? TacklesWonPercentile { get; set; }
+        public int? BlocksPercentile { get; set; }
+        public int? InterceptionsPercentile { get; set; }
+        public int? PressuresPercentile { get; set; }
+        public int? HeadersWonPercentile { get; set; }
 
-        public int? GoalsPerPositionPercentile { get; set; }
-        public int? ExpectedGoalsPerPositionPercentile { get; set; }
-        public int? ShotsPerPositionPercentile { get; set; }
-        public int? ShotsOnTargetPerPositionPercentile { get; set; }
-        public int? PenaltyGoalsPerPositionPercentile { get; set; }
-        public int? FreeKickShotsPerPositionPercentile { get; set; }
+        public int? TacklesWonPer90Percentile { get; set; }
+        public int? BlocksPer90Percentile { get; set; }
+        public int? InterceptionsPer90Percentile { get; set; }
+        public int? PressuresPer90Percentile { get; set; }
+        public int? HeadersWonPer90Percentile { get; set; }
 
-        public int? GoalsPer90PerPositionPercentile { get; set; }
-        public int? ExpectedGoalsPer90PerPositionPercentile { get; set; }
-        public int? ShotsPer90PerPositionPercentile { get; set; }
-        public int? ShotsOnTargetPer90PerPositionPercentile { get; set; }
-        public int? PenaltyGoalsPer90PerPositionPercentile { get; set; }
-        public int? FreeKickShotsPer90PerPositionPercentile { get; set; }
+        public int? TacklesWonPerPositionPercentile { get; set; }
+        public int? BlocksPerPositionPercentile { get; set; }
+        public int? InterceptionsPerPositionPercentile { get; set; }
+        public int? PressuresPerPositionPercentile { get; set; }
+        public int? HeadersWonPerPositionPercentile { get; set; }
+
+        public int? TacklesWonPer90PerPositionPercentile { get; set; }
+        public int? BlocksPer90PerPositionPercentile { get; set; }
+        public int? InterceptionsPer90PerPositionPercentile { get; set; }
+        public int? PressuresPer90PerPositionPercentile { get; set; }
+        public int? HeadersWonPer90PerPositionPercentile { get; set; }
     }
 }
