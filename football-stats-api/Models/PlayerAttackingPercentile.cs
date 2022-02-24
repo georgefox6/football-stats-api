@@ -6,7 +6,7 @@ namespace football_stats_api.Models
     public class PlayerAttackingPercentile
     {
         public int Id { get; set; }
-        public int? PlayerId { get; set; }
+        public int PlayerId { get; set; }
 
         public int? GoalsPercentile { get; set; }
         public int? ExpectedGoalsPercentile { get; set; }
