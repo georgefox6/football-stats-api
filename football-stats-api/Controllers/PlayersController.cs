@@ -38,6 +38,7 @@ namespace football_stats_api
 
             return player;
         }
+        
 
         // Get player by name
         //Get: api/Players/name/Bruno%20Fernandes
@@ -52,6 +53,51 @@ namespace football_stats_api
             }
 
             return player;
+        }
+
+        // Get player attacking percentiles
+        //Get: api/Players/percentile/attacking/133
+        [HttpGet("percentile/attacking/{id:int}")]
+        public async Task<ActionResult<PlayerAttackingPercentile>> GetPlayerAttackingPercentile(int id)
+        {
+            var playerAttackingPercentile = await _context.PlayerAttackingPercentile.FindAsync(id);
+
+            if (playerAttackingPercentile == null)
+            {
+                return NotFound();
+            }
+
+            return playerAttackingPercentile;
+        }
+
+        // Get player defending percentiles
+        //Get: api/Players/percentile/defending/133
+        [HttpGet("percentile/defending/{id:int}")]
+        public async Task<ActionResult<PlayerDefendingPercentile>> GetPlayerDefendingPercentile(int id)
+        {
+            var playerDefendingPercentile = await _context.PlayerDefendingPercentile.FindAsync(id);
+
+            if (playerDefendingPercentile == null)
+            {
+                return NotFound();
+            }
+
+            return playerDefendingPercentile;
+        }
+
+        // Get player possession percentiles
+        //Get: api/Players/percentile/possession/133
+        [HttpGet("percentile/possession/{id:int}")]
+        public async Task<ActionResult<PlayerPossessionPercentile>> GetPlayerPossessionPercentile(int id)
+        {
+            var playerPossessionPercentile = await _context.PlayerPossessionPercentile.FindAsync(id);
+
+            if (playerPossessionPercentile == null)
+            {
+                return NotFound();
+            }
+
+            return playerPossessionPercentile;
         }
 
         // Get player by team
