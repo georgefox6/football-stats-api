@@ -60,7 +60,7 @@ namespace football_stats_api
         [HttpGet("percentile/attacking/{id:int}")]
         public async Task<ActionResult<PlayerAttackingPercentile>> GetPlayerAttackingPercentile(int id)
         {
-            var playerAttackingPercentile = await _context.PlayerAttackingPercentile.FindAsync(id);
+            var playerAttackingPercentile = await _context.PlayerAttackingPercentile.FirstOrDefaultAsync( percentile => percentile.PlayerId == id );
 
             if (playerAttackingPercentile == null)
             {
@@ -75,7 +75,7 @@ namespace football_stats_api
         [HttpGet("percentile/defending/{id:int}")]
         public async Task<ActionResult<PlayerDefendingPercentile>> GetPlayerDefendingPercentile(int id)
         {
-            var playerDefendingPercentile = await _context.PlayerDefendingPercentile.FindAsync(id);
+            var playerDefendingPercentile = await _context.PlayerDefendingPercentile.FirstOrDefaultAsync( percentile => percentile.PlayerId == id );
 
             if (playerDefendingPercentile == null)
             {
@@ -90,7 +90,7 @@ namespace football_stats_api
         [HttpGet("percentile/possession/{id:int}")]
         public async Task<ActionResult<PlayerPossessionPercentile>> GetPlayerPossessionPercentile(int id)
         {
-            var playerPossessionPercentile = await _context.PlayerPossessionPercentile.FindAsync(id);
+            var playerPossessionPercentile = await _context.PlayerPossessionPercentile.FirstOrDefaultAsync(percentile => percentile.PlayerId == id );
 
             if (playerPossessionPercentile == null)
             {
