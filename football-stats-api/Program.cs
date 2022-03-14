@@ -2,7 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 using football_stats_api.Data;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+          builder =>
+          {
+              builder.WithOrigins("https://www.football-stats.uk",
+                                  "https://delightful-ocean-01cb0e303.1.azurestaticapps.net")
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod();
+          });
+});
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
 
@@ -16,6 +30,8 @@ builder.Services.AddEndpointsApiExplorer();
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
