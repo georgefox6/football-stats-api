@@ -12,7 +12,9 @@ builder.Services.AddCors(options =>
           builder =>
           {
               builder.WithOrigins("https://www.football-stats.uk",
-                                  "https://delightful-ocean-01cb0e303.1.azurestaticapps.net")
+                                  "https://delightful-ocean-01cb0e303.1.azurestaticapps.net",
+                                  "http://localhost:3000",
+                                  "http://localhost:8080")
                                   .AllowAnyHeader()
                                   .AllowAnyMethod();
           });
