@@ -69,6 +69,14 @@ namespace football_stats_api
 
             return playerAttackingPercentile;
         }
+        
+        // Get all player attacking percentiles
+        //Get: api/Players/percentile/attacking
+        [HttpGet("percentile/attacking")]
+        public async Task<ActionResult<IEnumerable<PlayerAttackingPercentile>>> GetAllPlayerAttackingPercentile()
+        {
+            return await _context.PlayerAttackingPercentile.ToListAsync();
+        }
 
         // Get player defending percentiles
         //Get: api/Players/percentile/defending/133
@@ -85,6 +93,14 @@ namespace football_stats_api
             return playerDefendingPercentile;
         }
 
+        // Get all player defending percentiles
+        //Get: api/Players/percentile/defending
+        [HttpGet("percentile/defending")]
+        public async Task<ActionResult<IEnumerable<PlayerDefendingPercentile>>> GetAllPlayerDefendingPercentile()
+        {
+            return await _context.PlayerDefendingPercentile.ToListAsync();
+        }
+
         // Get player possession percentiles
         //Get: api/Players/percentile/possession/133
         [HttpGet("percentile/possession/{id:int}")]
@@ -98,6 +114,14 @@ namespace football_stats_api
             }
 
             return playerPossessionPercentile;
+        }
+
+        // Get all player possession percentiles
+        //Get: api/Players/percentile/possession
+        [HttpGet("percentile/possession")]
+        public async Task<ActionResult<IEnumerable<PlayerPossessionPercentile>>> GetAllPlayerPossessionPercentile()
+        {
+            return await _context.PlayerPossessionPercentile.ToListAsync();
         }
 
         // Get player by team
