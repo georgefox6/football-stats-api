@@ -124,6 +124,29 @@ namespace football_stats_api
             return await _context.PlayerPossessionPercentile.ToListAsync();
         }
 
+        // Get player traits by player id
+        //Get: api/Players/traits/133
+        [HttpGet("traits/{id:int}")]
+        public async Task<ActionResult<PlayerTraits>> GetPlayerTraits(int id)
+        {
+            var playerTraits = await _context.PlayerTraits.FirstOrDefaultAsync(t => t.PlayerId == id);
+
+            if (playerTraits == null)
+            {
+                return NotFound();
+            }
+
+            return playerTraits;
+        }
+
+        // Get traits for all players
+        //Get: api/Players/traits
+        [HttpGet("traits")]
+        public async Task<ActionResult<IEnumerable<PlayerTraits>>> GetAllPlayerTraits()
+        {
+            return await _context.PlayerTraits.ToListAsync();
+        }
+
         // Get player by team
         //Get: api/Players/team/Manchester%20United
         [HttpGet("team/{playerTeam}")]

@@ -13,5 +13,6 @@ namespace football_stats_api.Data
         public DbSet<football_stats_api.Models.PlayerAttackingPercentile> PlayerAttackingPercentile { get; set; }
         public DbSet<football_stats_api.Models.PlayerPossessionPercentile> PlayerPossessionPercentile { get; set; }
         public DbSet<football_stats_api.Models.PlayerDefendingPercentile> PlayerDefendingPercentile { get; set; }
+        public DbSet<football_stats_api.Models.PlayerTraits> PlayerTraits { get; set; }
     }
 }
