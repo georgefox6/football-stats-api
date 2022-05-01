@@ -7,11 +7,11 @@ namespace football_stats_api.Models
     {
         //General
         public int Id { get; set; }
-        public Player? PlayerId { get; set; }
-        public Player? Player1 { get; set; }
-        public Player? Player2 { get; set; }
-        public Player? Player3 { get; set; }
-        public Player? Player4 { get; set; }
-        public Player? Player5 { get; set; }   
+        public int PlayerId { get; set; }
+        public int Player1 { get; set; }
+        public int Player2 { get; set; }
+        public int Player3 { get; set; }
+        public int Player4 { get; set; }
+        public int Player5 { get; set; }   
     }
 }

@@ -150,19 +150,29 @@ namespace football_stats_api
         // Get similar players by player id
         //Get: api/Players/similar/133
         [HttpGet("similar/{id:int}")]
-        public async Task<ActionResult<SimilarPlayers>> GetSimilarPlayers(int id)
+        public async Task<ActionResult<IEnumerable<Player>>> GetSimilarPlayers(int id)
         {
-            var similarPlayers = await _context.SimilarPlayers.FirstOrDefaultAsync(s => s.PlayerId!.id == id);
+            var similarPlayers = await _context.SimilarPlayers.FirstOrDefaultAsync(s => s.PlayerId == id);
 
             if (similarPlayers == null)
             {
                 return NotFound();
             }
 
-            //List<Player> players = new List<Player>();
-            //players.AddRange( await _context.Player.ToListAsync( p => p));
+            Player? p1 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player1);
+            Player? p2 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player2);
+            Player? p3 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player3);
+            Player? p4 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player4);
+            Player? p5 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player5);
 
-            return similarPlayers;
+            List<Player> players = new List<Player>();
+            players.Add(p1);
+            players.Add(p2);
+            players.Add(p3);
+            players.Add(p4);
+            players.Add(p5);
+
+            return players;
         }
 
         // Get player by team
