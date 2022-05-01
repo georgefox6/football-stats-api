@@ -147,6 +147,24 @@ namespace football_stats_api
             return await _context.PlayerTraits.ToListAsync();
         }
 
+        // Get similar players by player id
+        //Get: api/Players/similar/133
+        [HttpGet("similar/{id:int}")]
+        public async Task<ActionResult<SimilarPlayers>> GetSimilarPlayers(int id)
+        {
+            var similarPlayers = await _context.SimilarPlayers.FirstOrDefaultAsync(s => s.PlayerId!.id == id);
+
+            if (similarPlayers == null)
+            {
+                return NotFound();
+            }
+
+            //List<Player> players = new List<Player>();
+            //players.AddRange( await _context.Player.ToListAsync( p => p));
+
+            return similarPlayers;
+        }
+
         // Get player by team
         //Get: api/Players/team/Manchester%20United
         [HttpGet("team/{playerTeam}")]
