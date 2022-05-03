@@ -13,5 +13,10 @@ namespace football_stats_api.Models
         public int Player3 { get; set; }
         public int Player4 { get; set; }
         public int Player5 { get; set; }   
+        public int Player6 { get; set; }   
+        public int Player7 { get; set; }   
+        public int Player8 { get; set; }   
+        public int Player9 { get; set; }   
+        public int Player10 { get; set; }   
     }
 }

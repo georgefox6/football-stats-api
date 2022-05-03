@@ -164,6 +164,11 @@ namespace football_stats_api
             Player? p3 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player3);
             Player? p4 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player4);
             Player? p5 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player5);
+            Player? p6 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player6);
+            Player? p7 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player7);
+            Player? p8 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player8);
+            Player? p9 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player9);
+            Player? p10 = await _context.Player.FirstOrDefaultAsync(p => p.id == similarPlayers.Player10);
 
             List<Player> players = new List<Player>();
             players.Add(p1);
@@ -171,6 +176,11 @@ namespace football_stats_api
             players.Add(p3);
             players.Add(p4);
             players.Add(p5);
+            players.Add(p6);
+            players.Add(p7);
+            players.Add(p8);
+            players.Add(p9);
+            players.Add(p10);
 
             return players;
         }
