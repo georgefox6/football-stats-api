@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using football_stats_api.Data;
 using football_stats_api.Models;
+using football_stats_api.Requests;
+using football_stats_api.Responses;
+using football_stats_api.Filters;
 
 namespace football_stats_api
 {
@@ -38,7 +41,60 @@ namespace football_stats_api
 
             return player;
         }
-        
+
+        [HttpGet]
+        [Route("list")]
+        public async Task<ActionResult<PaginatedResponse<Player>>> ListPlayers( [FromQuery] ListPlayersRequest request)
+        {
+            var playersQueryable = _context.Player
+                .FilterByClub(request.ClubFilter)
+                .FilterByNation(request.NationFilter)
+                .FilterByPosition( request.PositionFilter)
+                .FilterByContractEndDate( request.ContractEndDateFilter )
+                .FilterByMinMarketValue( request.MinMarketValueFilter )
+                .FilterByMaxMarketValue( request.MaxMarketValueFilter )
+                .FilterByMinWage(request.MinWageFilter)
+                .FilterByMaxWage(request.MaxWageFilter)
+                .SearchOn( request.SearchTerm );
+
+            var playerCount = await playersQueryable.CountAsync();
+
+            IOrderedQueryable<Player> playersQueryableOrdered;
+
+            if ( request.SortDesc )
+            {
+                playersQueryableOrdered = request.Sort switch
+                {
+                    "PlayerName" => playersQueryable.OrderByDescending( p => p.playerName ),
+                    "Nationality" => playersQueryable.OrderBy( p => p.playerNation ),
+                    "Club" => playersQueryable.OrderByDescending( p => p.playerTeam ),
+                    "Position" => playersQueryable.OrderByDescending( p => p.playerPosition ),
+                    "Age" => playersQueryable.OrderByDescending( p => p.playerAge ),
+                    "Value" => playersQueryable.OrderByDescending( p => p.marketValue ),
+                    _ => playersQueryable.OrderByDescending( p => p.marketValue )
+                };
+            } else
+            {
+                playersQueryableOrdered = request.Sort switch
+                {
+                    "PlayerName" => playersQueryable.OrderBy( p => p.playerName ),
+                    "Nationality" => playersQueryable.OrderBy( p => p.playerNation ),
+                    "Club" => playersQueryable.OrderBy( p => p.playerTeam ),
+                    "Position" => playersQueryable.OrderBy( p => p.playerPosition ),
+                    "Age" => playersQueryable.OrderBy( p => p.playerAge ),
+                    "Value" => playersQueryable.OrderBy( p => p.marketValue ),
+                    _ => playersQueryable.OrderBy(p => p.marketValue)
+                };
+            }            
+
+            var paginatedPlayers = playersQueryableOrdered
+               .Skip( request.Skip )
+               .Take( request.Take )
+               .ToList();
+
+            return new PaginatedResponse<Player>(paginatedPlayers, request.Page, request.PageSize, playerCount);
+        }        
+
 
         // Get player by name
         //Get: api/Players/name/Bruno%20Fernandes
