@@ -66,9 +66,21 @@ namespace football_stats_api
                 playersQueryableOrdered = request.Sort switch
                 {
                     "PlayerName" => playersQueryable.OrderByDescending( p => p.playerName ),
-                    "Nationality" => playersQueryable.OrderBy( p => p.playerNation ),
+                    "Nationality" => playersQueryable.OrderByDescending( p => p.playerNation ),
                     "Club" => playersQueryable.OrderByDescending( p => p.playerTeam ),
-                    "Position" => playersQueryable.OrderByDescending( p => p.playerPosition ),
+                    "Position" => playersQueryable.OrderBy(p => p.playerPosition == "Centre-Forward")
+                                                  .ThenBy(p => p.playerPosition == "Second Striker")
+                                                  .ThenBy(p => p.playerPosition == "Left Winger")
+                                                  .ThenBy(p => p.playerPosition == "Right Winger")
+                                                  .ThenBy(p => p.playerPosition == "Attacking Midfield")
+                                                  .ThenBy(p => p.playerPosition == "Left Midfield")
+                                                  .ThenBy(p => p.playerPosition == "Right Midfield")
+                                                  .ThenBy(p => p.playerPosition == "Central Midfield")
+                                                  .ThenBy(p => p.playerPosition == "Defensive Midfield")
+                                                  .ThenBy(p => p.playerPosition == "Left-Back")
+                                                  .ThenBy(p => p.playerPosition == "Right-Back")
+                                                  .ThenBy(p => p.playerPosition == "Centre-Back")
+                                                  .ThenBy(p => p.playerPosition == "Goalkeeper"),
                     "Age" => playersQueryable.OrderByDescending( p => p.playerAge ),
                     "Value" => playersQueryable.OrderByDescending( p => p.marketValue ),
                     _ => playersQueryable.OrderByDescending( p => p.marketValue )
@@ -80,7 +92,19 @@ namespace football_stats_api
                     "PlayerName" => playersQueryable.OrderBy( p => p.playerName ),
                     "Nationality" => playersQueryable.OrderBy( p => p.playerNation ),
                     "Club" => playersQueryable.OrderBy( p => p.playerTeam ),
-                    "Position" => playersQueryable.OrderBy( p => p.playerPosition ),
+                    "Position" => playersQueryable.OrderBy( p => p.playerPosition == "Goalkeeper")
+                                                  .ThenBy( p => p.playerPosition == "Centre-Back")
+                                                  .ThenBy( p => p.playerPosition == "Right-Back")
+                                                  .ThenBy( p => p.playerPosition == "Left-Back")
+                                                  .ThenBy( p => p.playerPosition == "Defensive Midfield")
+                                                  .ThenBy( p => p.playerPosition == "Central Midfield")
+                                                  .ThenBy( p => p.playerPosition == "Right Midfield")
+                                                  .ThenBy( p => p.playerPosition == "Left Midfield")
+                                                  .ThenBy( p => p.playerPosition == "Attacking Midfield")
+                                                  .ThenBy( p => p.playerPosition == "Right Winger")
+                                                  .ThenBy( p => p.playerPosition == "Left Winger")
+                                                  .ThenBy( p => p.playerPosition == "Second Striker")
+                                                  .ThenBy( p => p.playerPosition == "Centre-Forward"),
                     "Age" => playersQueryable.OrderBy( p => p.playerAge ),
                     "Value" => playersQueryable.OrderBy( p => p.marketValue ),
                     _ => playersQueryable.OrderBy(p => p.marketValue)
