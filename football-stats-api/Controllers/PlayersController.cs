@@ -27,6 +27,14 @@ namespace football_stats_api
             return await _context.Player.ToListAsync();
         }
 
+        [HttpGet]
+        [Route("summary")]
+        public async Task<ActionResult<IEnumerable<PlayerSummary>>> GetPlayersSummary()
+        {
+            //return await _context.Player.ToListAsync();
+            return await _context.Player.Select(i => i.ToSummary()).ToListAsync();
+        }
+
         // Get player by id
         // GET: api/Players/5
         [HttpGet("{id:int}")]
@@ -117,7 +125,9 @@ namespace football_stats_api
                .ToList();
 
             return new PaginatedResponse<Player>(paginatedPlayers, request.Page, request.PageSize, playerCount);
-        }        
+        }     
+        
+
 
 
         // Get player by name

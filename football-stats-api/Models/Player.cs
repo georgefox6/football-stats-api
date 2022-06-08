@@ -31,6 +31,7 @@ namespace football_stats_api.Models
         public int? shots { get; set; }
         public int? shotsOnTarget { get; set; }
         public double shotDistance { get; set; }
+
         public int? freeKickShots { get; set; }
         public int? penaltyScored { get; set; }
         public int? penaltyShots { get; set; }
@@ -83,5 +84,14 @@ namespace football_stats_api.Models
         public string? contractEndDate { get; set; }
         public int? marketValue { get; set; }
         public int? wage { get; set; }
+
+        internal PlayerSummary ToSummary()
+        {
+            return new PlayerSummary
+            {
+                Id = this.id,
+                Name = this.playerName
+            };
+        }
     }
 }
