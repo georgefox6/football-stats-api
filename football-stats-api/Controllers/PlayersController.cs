@@ -91,6 +91,8 @@ namespace football_stats_api
                                                   .ThenBy(p => p.playerPosition == "Goalkeeper"),
                     "Age" => playersQueryable.OrderByDescending( p => p.playerAge ),
                     "Value" => playersQueryable.OrderByDescending( p => p.marketValue ),
+                    "Goals" => playersQueryable.OrderByDescending( p => p.goals),
+                    "Assists" => playersQueryable.OrderByDescending( p => p.assists),
                     _ => playersQueryable.OrderByDescending( p => p.marketValue )
                 };
             } else
@@ -115,6 +117,8 @@ namespace football_stats_api
                                                   .ThenBy( p => p.playerPosition == "Centre-Forward"),
                     "Age" => playersQueryable.OrderBy( p => p.playerAge ),
                     "Value" => playersQueryable.OrderBy( p => p.marketValue ),
+                    "Goals" => playersQueryable.OrderBy(p => p.goals),
+                    "Assists" => playersQueryable.OrderBy(p => p.assists),
                     _ => playersQueryable.OrderBy(p => p.marketValue)
                 };
             }            
