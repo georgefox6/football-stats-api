@@ -11,7 +11,14 @@ namespace football_stats_api.Filters
             var clubsLower = clubs.Select(x => x.ToLower());
             return clubsLower.Any() ? players.Where(p => p.playerTeam != null && clubsLower.Contains(p.playerTeam.ToLower())) : players;
         }
-        
+
+        public static IQueryable<Player> FilterByLeague(this IQueryable<Player> players, List<string>? leagues)
+        {
+            if (leagues == null) { return players; }
+            var leaguesLower = leagues.Select(x => x.ToLower());
+            return leaguesLower.Any() ? players.Where(p => p.league != null && leaguesLower.Contains(p.league.ToLower())) : players;
+        }
+
         public static IQueryable<Player> FilterByNation(this IQueryable<Player> players, List<string>? nationalities)
         {
             if(nationalities == null) { return players; }
@@ -30,11 +37,19 @@ namespace football_stats_api.Filters
             var contractEndDateLower = contractEndDate.Select(x => x.ToLower());
             return contractEndDateLower.Any() ? players.Where(p => p.contractEndDate!= null && contractEndDateLower.Contains(p.contractEndDate.ToLower())) : players;
         }
-        //public static IQueryable<Player> FilterByMinAge(this IQueryable<Player> players, int? minAge)
-        //{
-        //    if (minAge == null) { return players; }
 
-        //    return players.Where(p => p.playerAge!= null && int.Parse(p.playerAge.Split('-')[0]) >= minAge);
+        public static IQueryable<Player> FilterByMinAge(this IQueryable<Player> players, int? minAge)
+        {
+            if (minAge == null) { return players; }
+
+            return players.Where(p => p.playerAge != null && p.playerAge >= minAge);
+        }
+        public static IQueryable<Player> FilterByMaxAge(this IQueryable<Player> players, int? maxAge)
+        {
+            if (maxAge == null) { return players; }
+
+            return players.Where(p => p.playerAge != null && p.playerAge <= maxAge);
+        }
 
         public static IQueryable<Player> FilterByMinMarketValue(this IQueryable<Player> players, int? minMarketValue)
         {

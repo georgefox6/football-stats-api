@@ -10,7 +10,7 @@ namespace football_stats_api.Models
         public string playerName { get; set; }
         public string? playerNation { get; set; }
         public string? playerPosition { get; set; }
-        public string? playerAge { get; set; }
+        public int? playerAge { get; set; }
         public string? playerTeam { get; set; }
         public string? imageUrl { get; set; }
 
@@ -84,6 +84,9 @@ namespace football_stats_api.Models
         public string? contractEndDate { get; set; }
         public int? marketValue { get; set; }
         public int? wage { get; set; }
+        public DateTime? dateOfBirth { get; set; }
+        public string? league { get; set; }
+
 
         internal PlayerSummary ToSummary()
         {

@@ -63,6 +63,8 @@ namespace football_stats_api
                 .FilterByMaxMarketValue( request.MaxMarketValueFilter )
                 .FilterByMinWage(request.MinWageFilter)
                 .FilterByMaxWage(request.MaxWageFilter)
+                .FilterByMinAge(request.MinAgeFilter)
+                .FilterByMaxAge(request.MaxAgeFilter)
                 .SearchOn( request.SearchTerm );
 
             var playerCount = await playersQueryable.CountAsync();

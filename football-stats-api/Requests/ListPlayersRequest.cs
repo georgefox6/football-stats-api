@@ -4,6 +4,7 @@
     {
         public List<string>? ClubFilter { get; set; }
         public List<string>? NationFilter { get; set; }
+        public List<string>? LeagueFilter { get; set; }
         public List<string>? PositionFilter { get; set; }
         public int? MinAgeFilter { get; set; }
         public int? MaxAgeFilter { get; set; }
